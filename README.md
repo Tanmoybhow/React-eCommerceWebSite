@@ -75,8 +75,7 @@ VoltMart is a modern, responsive e-commerce web application built with **React**
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/voltmart.git
-```
+git clone https://github.com/Tanmoybhow/React-eCommerceWebSite.git
 
 Navigate to project
 
