@@ -23,7 +23,7 @@ const Cart = () => {
   const [location, setLocation] = useState(null);
   const navigate = useNavigate();
 
-  const total = cartList.reduce((acc,curr)=>acc+Number(curr.price),0)
+  let total=cartList.reduce((acc,curr)=>acc+Number(curr.price)*Number(curr.quantity),0)
 
   const getLocation = () => {
     navigator.geolocation.getCurrentPosition(
@@ -47,6 +47,8 @@ const Cart = () => {
   useEffect(() => {
     getLocation();
   }, []);
+
+  
 
   const detectMyLocation = () => {
     getLocation();
@@ -81,7 +83,7 @@ const Cart = () => {
                     </p>
                     <div className="flex gap-2 items-center">
                       <p className="text-blue-600 font-semibold">
-                        ₹{Number(item.price)}
+                        ₹{Math.floor(Number(item.price)) * Number(item.quantity)}
                       </p>
                       <span className="w-5 h-6 p-2 text-[14px] bg-gray-100 rounded flex items-center justify-center">
                         {item.selectedSize !== null
@@ -98,6 +100,7 @@ const Cart = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       dispatch(decreaseQuantity(item));
+
                     }}
                   >
                     -
@@ -110,6 +113,7 @@ const Cart = () => {
                     onClick={(e) => {
                       e.stopPropagation()
                       dispatch(increaseQuantity(item));
+                      
                     }}
                   >
                     +
@@ -128,7 +132,7 @@ const Cart = () => {
               </div>
             ))}
 
-            <div className="flex flex-col md:flex-row justify-between items-start gap-5 md:gap-14">
+            <div className="flex flex-col-reverse md:flex-row justify-between items-start gap-5 md:gap-14">
               <div className="bg-gray-200 dark:bg-slate-800 p-6 rounded-xl md:w-1/2 w-full">
                 <h1 className="text-black font-bold text-xl mb-3 dark:text-slate-100">
                   Delivery Info
@@ -229,7 +233,7 @@ const Cart = () => {
                       <ReceiptIndianRupee className="text-[10px] dark:text-slate-100"/>
                       <p className="text-gray-600 dark:text-slate-100">Items Total</p>
                     </div>
-                    <p className="dark:text-slate-100">₹{total}</p>
+                    <p className="dark:text-slate-100">₹{Math.floor(total)}</p>
                   </div>
 
                   <div className="flex justify-between items-center">
@@ -253,7 +257,7 @@ const Cart = () => {
                 <hr className="mb-2 text-gray-400"/>
                 <div className="flex justify-between">
                   <p className="text-l font-bold dark:text-slate-100">Grand Total</p>
-                  <p className="text-l dark:text-slate-100 font-bold">{`₹${total+5}`}</p>
+                  <p className="text-l dark:text-slate-100 font-bold">{`₹${Math.floor(total)+5}`}</p>
                 </div>
 
                 <div className="mt-6 space-y-2">

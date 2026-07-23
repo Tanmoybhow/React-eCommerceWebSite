@@ -27,7 +27,16 @@ export const cartSlice = createSlice({
           toast.error(`You can't add more then 5`);
         }
       } else {
-        state.cartList.push(action.payload);
+        if(action.payload.isfromSingleProduct){
+           if(action.payload.quantity>5){
+            toast.error("You cant store more than 5 products");
+            return;
+           }else{
+            state.cartList.push(action.payload);
+           }
+        }else{
+          state.cartList.push(action.payload);
+        }
         toast.success(`${action.payload.title} has been successfully added`);
       }
     },
