@@ -177,9 +177,9 @@ VITE_OPENCAGE_API_KEY=YOUR_OPENCAGE_KEY
 
 **Tanmoy Bhowmik**
 
-GitHub: https://github.com/yourusername
+GitHub: https://github.com/Tanmoybhow
 
-LinkedIn: https://linkedin.com/in/yourprofile
+LinkedIn: https://www.linkedin.com/in/tanmoy-bhowmik-se/
 
 ---
 
